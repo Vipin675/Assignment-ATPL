@@ -63,6 +63,8 @@ def findUser():
             reader = csv.reader(file)
             for x in reader:
                 if(x[0] == yourData):
-                    print("ID :",x[0],"\nFirst name :",x[1],"\nLast name :",x[2],"\nUsername :",x[3],"\nEmail :",x[4],"\nAvatar :",x[5],"\nGender :",x[6],"\nDOB :",x[7],"\nAddress :",x[8])
+                    print("\nID :",x[0],"\nFirst name :",x[1],"\nLast name :",x[2],"\nUsername :",x[3],"\nEmail :",x[4],"\nAvatar :",x[5],"\nGender :",x[6],"\nDOB :",x[7],"\nAddress :",x[8])
+                    return x
+            print("User isn't available")
     except:
         print("File isn't available for finding the user")
