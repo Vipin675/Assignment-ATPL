@@ -42,7 +42,11 @@ def addRandomEntries():
             print("entry",x+1,"entered from try")
         
 def sortData():
-
+    try:
+        pd.read_csv("users.csv")
+    except:
+        print("users.csv require to sort and create users-sorted.csv file")
+        return
     usersData = []
     with open("users.csv", mode='r') as file:
         reader = csv.reader(file)
@@ -57,14 +61,18 @@ def sortData():
         writer.writerows(usersData)
 
 def findUser():
-    yourData = input("Enter your Id or username : ")
+
     try:
-        with open("users.csv", 'r') as file:
-            reader = csv.reader(file)
-            for x in reader:
-                if(x[0] == yourData):
-                    print("\nID :",x[0],"\nFirst name :",x[1],"\nLast name :",x[2],"\nUsername :",x[3],"\nEmail :",x[4],"\nAvatar :",x[5],"\nGender :",x[6],"\nDOB :",x[7],"\nAddress :",x[8])
-                    return x
-            print("User isn't available")
+        pd.read_csv("users.csv")
     except:
         print("File isn't available for finding the user")
+        return
+
+    yourData = input("Enter your Id or username : ")
+    with open("users.csv", 'r') as file:
+        reader = csv.reader(file)
+        for x in reader:
+            if(x[0] == yourData):
+                print("\nID :",x[0],"\nFirst name :",x[1],"\nLast name :",x[2],"\nUsername :",x[3],"\nEmail :",x[4],"\nAvatar :",x[5],"\nGender :",x[6],"\nDOB :",x[7],"\nAddress :",x[8])
+                return x
+        print("User isn't available")
